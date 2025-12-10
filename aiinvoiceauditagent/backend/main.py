@@ -8,6 +8,8 @@ from risk import calculate_total_risk
 
 from schemas import POMatchRequest
 from po_match_agent import po_match
+from explanation_agent import generate_explanation
+
 
 app = FastAPI()
 
@@ -39,6 +41,14 @@ async def upload_invoice(file: UploadFile = File(...)):
         po_result
     )
 
+    explanation = generate_explanation({
+        "invoice_number": extracted_data["invoice_no"],
+        "supplier": extracted_data["supplier"],
+        "validations": validation_results,
+        "po_matches": po_result,
+        "risk_score": risk_score,
+        "final_status": status
+    })
 
     return {
         "filename": file.filename,
@@ -46,7 +56,8 @@ async def upload_invoice(file: UploadFile = File(...)):
         "validations": validation_results,
         "risk_score": risk_score,
         "po_matches": po_result,
-        "final_status": status
+        "final_status": status,
+        "explanation": explanation
     }
 
 @app.post("/po/match")
