@@ -1,6 +1,6 @@
 import numpy as np
 
-DOC_THRESHOLD = 0.80
+DOC_THRESHOLD = 0.55
 
 def cosine_sim(v1, v2):
     v1 = np.array(v1)

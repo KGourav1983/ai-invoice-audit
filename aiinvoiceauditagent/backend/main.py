@@ -4,7 +4,10 @@ import shutil, os
 from ocr import extract_text_from_pdf
 from extractor import extract_fields
 from rules import run_validations
-from risk import calculate_risk
+from risk import calculate_total_risk
+
+from schemas import POMatchRequest
+from po_match_agent import po_match
 
 app = FastAPI()
 
@@ -25,19 +28,26 @@ async def upload_invoice(file: UploadFile = File(...)):
     extracted_data = parse_invoice(raw_text)
 
     validation_results = run_validations(extracted_data)
-    risk_score, status = calculate_risk(validation_results)
+
+    po_result = po_match({
+        "supplier": extracted_data["supplier"],
+        "line_items": extracted_data["line_items"]
+    })
+
+    risk_score, status = calculate_total_risk(
+        validation_results,
+        po_result
+    )
+
 
     return {
         "filename": file.filename,
         "extracted_data": extracted_data,
         "validations": validation_results,
         "risk_score": risk_score,
+        "po_matches": po_result,
         "final_status": status
     }
-
-
-from schemas import POMatchRequest
-from po_match_agent import po_match
 
 @app.post("/po/match")
 def match_po(req: POMatchRequest):
