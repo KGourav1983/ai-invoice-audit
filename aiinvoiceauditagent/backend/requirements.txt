@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pytesseract
+pdf2image
+pillow
+sqlite-utils
+python-multipart
+openai
+requests

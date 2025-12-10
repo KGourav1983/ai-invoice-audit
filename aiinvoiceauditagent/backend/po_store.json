@@ -1,0 +1,27 @@
+[
+  {
+    "po_id": "PO-1001",
+    "supplier": "DEMO - Sliced Invoices",
+    "items": [
+      {
+        "item_id": "POI-1",
+        "description": "Website design service",
+        "qty": 1,
+        "unit_price": 85
+      }
+    ]
+  },
+
+  {
+    "po_id": "PO-1002",
+    "supplier": "ABC Tech",
+    "items": [
+      {
+        "item_id": "POI-2",
+        "description": "Cloud hosting monthly",
+        "qty": 5,
+        "unit_price": 120
+      }
+    ]
+  }
+]
