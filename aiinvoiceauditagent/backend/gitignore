@@ -1,0 +1,94 @@
+# ---------------------------
+# Python
+# ---------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual Environment
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dll
+
+# ---------------------------
+# FastAPI / Uvicorn / Serverless
+# ---------------------------
+package/
+build/
+dist/
+*.zip
+.serverless/          # <-- Serverless framework directory
+.sls-next/
+.cloud/
+.artifacts/
+
+# Logs
+*.log
+logs/
+nohup.out
+
+# ---------------------------
+# Database Files
+# ---------------------------
+*.db
+*.sqlite
+*.sqlite3
+/data/
+tmp/
+tmp/*
+/tmp/*.db
+
+# FAISS Vector DB
+faiss_index/
+vectorstore/
+*.faiss
+*.npy
+*.npz
+
+# ---------------------------
+# Environment & Secrets
+# ---------------------------
+.env
+*.env
+.secret/
+secrets.json
+
+# ---------------------------
+# IDE / Editor files
+# ---------------------------
+.vscode/
+.idea/
+*.code-workspace
+
+# ---------------------------
+# OS Files
+# ---------------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------------
+# Cache / Artifacts
+# ---------------------------
+.cache/
+coverage/
+pytest_cache/
+
+# ---------------------------
+# MyPy / Pyright / Ruff
+# ---------------------------
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# ---------------------------
+# Local Config
+# ---------------------------
+settings_local.py
