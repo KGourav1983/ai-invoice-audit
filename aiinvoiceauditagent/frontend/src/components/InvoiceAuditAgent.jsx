@@ -20,7 +20,7 @@ export default function InvoiceAuditAgent() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("https://redesigned-fishstick-q75x764677r6f96gj-8000.app.github.dev/invoice/upload", {
+      const res = await fetch("https://0ls2c319kd.execute-api.us-east-1.amazonaws.com/invoice/upload", {
         method: "POST",
         body: formData,
       });

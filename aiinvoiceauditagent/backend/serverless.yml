@@ -1,0 +1,23 @@
+service: ai-invoiceaudit-agent
+frameworkVersion: ">=3.0"
+
+provider:
+  name: aws
+  region: us-east-1
+  timeout: 29
+
+  environment:
+    OPENROUTER_API_KEY: ${env:OPENROUTER_API_KEY}
+
+  ecr:
+    images:
+      invoiceauditimage:
+        path: .
+
+functions:
+  api:
+    image: invoiceauditimage
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY

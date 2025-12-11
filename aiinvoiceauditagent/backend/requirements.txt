@@ -1,9 +1,10 @@
 fastapi
 uvicorn
-pytesseract
-pdf2image
-pillow
 sqlite-utils
 python-multipart
 openai
 requests
+mangum==0.17.0
+numpy==1.26.4
+pypdfium2
+Pillow
