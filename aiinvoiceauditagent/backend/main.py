@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 import shutil, os
 
 from ocr import extract_text_from_pdf
@@ -12,6 +13,15 @@ from explanation_agent import generate_explanation
 
 
 app = FastAPI()
+
+# ---- CORS ----
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production: restrict this
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 UPLOAD_DIR = "/tmp/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
